@@ -1,0 +1,18 @@
+
+    {% if user.is_active %}
+    <a href="{% url 'home' %}">예린이네</a>
+    <a href="{% url 'logout' %}">Logout</a>
+    <hr>
+    {% else %}
+    <a href="{% url 'home' %}">예린이네</a>
+    <a href="{% url 'login' %}">Login</a>
+    <a href="{% url 'signup' %}">Signup</a>
+    <hr>
+    {% endif %}
+
+    {% for post in posts.all %}
+        <div>
+            <h2><a href = "{% url 'detail' post.id %}">{{post.title}}</a></h2>
+            <p>{{post.created_date}}</p>
+        </div>
+    {% endfor %}

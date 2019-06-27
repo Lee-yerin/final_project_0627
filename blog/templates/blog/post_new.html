@@ -1,0 +1,8 @@
+<body>
+    <h1>글을 작성하세요</h1>
+    <form method = "POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type = "submit">저장하기</button>
+    </form>
+</body>
