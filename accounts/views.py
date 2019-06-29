@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from .forms import CreateUserForm
 from django.contrib.auth import views
@@ -13,7 +13,7 @@ def signup(request):
         print(userform.is_valid())
         if userform.is_valid():
             userform.save()
-            return redirect('home')
+            return redirect('/blog/home')
     elif request.method == 'GET':
         userform = CreateUserForm()
 

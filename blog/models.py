@@ -16,6 +16,9 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def summary(self):
+        return self.title[ :6]
 
 class Comment(models.Model):
     post = models.ForeignKey('blog.Post', related_name='comments', on_delete=models.CASCADE)

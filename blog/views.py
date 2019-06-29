@@ -2,12 +2,14 @@ from django.shortcuts import render,get_object_or_404, redirect
 from .models import Post, Comment
 from django.utils import timezone
 from .forms import PostForm, CommentForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def home(request):
     posts = Post.objects
     return render(request, 'blog/home.html', {'posts':posts})
 
+@login_required
 def detail(request, post_id):
     post_detail = get_object_or_404(Post, pk = post_id)
     form = CommentForm()
@@ -58,3 +60,4 @@ def comment_delete(request, comment_id):
     post = comment.post
     comment.delete()
     return redirect('detail', post_id=post.id)
+
